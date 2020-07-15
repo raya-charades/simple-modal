@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "sass": "node-sass ./style.scss ./style.css --output-style compressed --watch"
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1"
+  }
+}

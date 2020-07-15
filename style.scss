@@ -1,0 +1,137 @@
+// 引数にkeyframesのnameを設定
+@mixin animation($name) {
+  animation: $name .2s forwards;
+}
+
+// fullsizeが表示される際のアニメーション
+@keyframes visible {
+  0% {
+    opacity: 0;
+    z-index: 1000;
+  }
+  100% {
+    opacity: 1;
+    z-index: 1000;
+  }
+}
+
+// fullsizeが非表示になる際のアニメーション
+@keyframes hidden {
+  0% {
+    opacity: 1;
+    z-index: 1000;
+  }
+  99% {
+    opacity: 0;
+    z-index: 1000;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1000;
+  }
+}
+
+// 簡易リセット
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 16px;
+  padding: 1rem;
+}
+img {
+  display: block;
+  width: 100%;
+}
+
+// サムネイルの並びを横に
+.modal-wrap {
+  display: flex;
+}
+
+.simple-modal {
+  width: 30%;
+
+  // 最後の要素だけ除外してstyleを付与
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
+
+  &__thumbnail {
+    cursor: pointer;
+    max-width: 20rem;
+    width: 100%;
+  }
+
+  &__fullsize {
+    align-content: center;
+    background-color: rgba(0, 0, 0, .8);
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1000;
+
+    // 閉じるアイコンを作成している擬似要素
+    &:before,
+    &:after {
+      background-color: #f7f7f7;
+      content: '';
+      display: block;
+      height: 1px;
+      position: fixed;
+      right: 1rem;
+      top: 2.828rem;
+      transform-origin: center;
+      width: 4rem;
+    }
+    &:before {
+      transform: rotateZ(45deg);
+    }
+    &:after {
+      transform: rotateZ(135deg);
+    }
+
+    // jsで付与するクラスを予め用意
+    &.is-visible {
+      @include animation(visible);
+    }
+    &.is-hidden {
+      @include animation(hidden);
+    }
+  }
+
+  &__label {
+    text-align: center;
+    width: 100%;
+
+    &--dark {
+      color: #333;
+    }
+
+    &--light {
+      color: #f7f7f7;
+    }
+  }
+
+  &__photo {
+
+    &--fullsize {
+      margin-bottom: 1rem;
+      max-width: 40rem;
+    }
+
+    &--tumbnail {
+      margin-bottom: .5rem;
+    }
+  }
+}
