@@ -7,23 +7,11 @@
 @keyframes visible {
   0% {
     opacity: 0;
-    z-index: 1000;
-  }
-  100% {
-    opacity: 1;
-    z-index: 1000;
-  }
-}
-
-// fullsizeが非表示になる際のアニメーション
-@keyframes hidden {
-  0% {
-    opacity: 1;
-    z-index: 1000;
-  }
-  100% {
-    opacity: 0;
     z-index: -1000;
+  }
+  100% {
+    opacity: 1;
+    z-index: 1000;
   }
 }
 
@@ -33,13 +21,16 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   font-size: 16px;
   padding: 1rem;
 }
+
 h1 {
   margin-bottom: 2rem;
 }
+
 img {
   display: block;
   width: 100%;
@@ -62,6 +53,7 @@ img {
 
   &__fullsize {
     align-content: center;
+    align-items: center;
     background-color: rgba(0, 0, 0, .8);
     cursor: pointer;
     display: flex;
@@ -89,9 +81,11 @@ img {
       transform-origin: center;
       width: 4rem;
     }
+
     &:before {
       transform: rotateZ(45deg);
     }
+
     &:after {
       transform: rotateZ(135deg);
     }
@@ -99,9 +93,6 @@ img {
     // jsで付与するクラスを予め用意
     &.is-visible {
       @include animation(visible);
-    }
-    &.is-hidden {
-      @include animation(hidden);
     }
   }
 
