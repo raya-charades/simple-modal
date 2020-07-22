@@ -1,9 +1,18 @@
 {
   "private": true,
   "scripts": {
-    "sass": "node-sass ./style.scss ./style.css --output-style compressed --watch"
+    "sass": "node-sass ./style.scss ./style.css --output-style compressed --watch",
+    "babel": "babel ./index.js --out-file ./main.js --watch",
+    "minify": "uglifyjs --output main.js --compress --mangle -- main.js",
+    "dev": "npm-run-all -p babel sass"
   },
   "devDependencies": {
-    "node-sass": "^4.14.1"
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "node-sass": "^4.14.1",
+    "npm-run-all": "^4.1.5",
+    "uglify-js": "^3.10.0",
+    "watch": "^1.0.2"
   }
 }

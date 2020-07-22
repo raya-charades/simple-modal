@@ -1,13 +1,1 @@
-(function() {
-  'use strict'
-  
-  const thumbnail = [...document.querySelectorAll('.js-thumbnail')]
-  const fullsize = [...document.querySelectorAll('.js-fullsize')]
-
-  const visibleFullsize = e => e.nextElementSibling.classList.add('is-visible')
-  const hiddenFullsize = e => e.target.classList.remove('is-visible')
-
-  thumbnail.forEach(e => e.addEventListener('click', () => visibleFullsize(e)))
-  fullsize.forEach(e => e.addEventListener('click', hiddenFullsize))
-
-})()
+"use strict";function _toConsumableArray(r){return _arrayWithoutHoles(r)||_iterableToArray(r)||_unsupportedIterableToArray(r)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _unsupportedIterableToArray(r,e){if(r){if("string"==typeof r)return _arrayLikeToArray(r,e);var t=Object.prototype.toString.call(r).slice(8,-1);return"Object"===t&&r.constructor&&(t=r.constructor.name),"Map"===t||"Set"===t?Array.from(r):"Arguments"===t||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)?_arrayLikeToArray(r,e):void 0}}function _iterableToArray(r){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(r))return Array.from(r)}function _arrayWithoutHoles(r){if(Array.isArray(r))return _arrayLikeToArray(r)}function _arrayLikeToArray(r,e){(null==e||e>r.length)&&(e=r.length);for(var t=0,n=new Array(e);t<e;t++)n[t]=r[t];return n}!function(){function e(r){return r.target.classList.remove("is-visible")}var r=_toConsumableArray(document.querySelectorAll(".js-thumbnail")),t=_toConsumableArray(document.querySelectorAll(".js-fullsize"));r.forEach(function(r){return r.addEventListener("click",function(){return r.nextElementSibling.classList.add("is-visible")})}),t.forEach(function(r){return r.addEventListener("click",e)})}();
